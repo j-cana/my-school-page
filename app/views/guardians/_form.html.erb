@@ -1,0 +1,39 @@
+<div class="card shadow-sm">
+  <div class="card-header bg-black text-warning fw-bold">
+    <%= @guardian.new_record? ? "New Guardian" : "Edit Guardian" %>
+  </div>
+
+  <div class="card-body">
+    <%= form_with(model: @guardian) do |form| %>
+      <% if @guardian.errors.any? %>
+        <div class="alert alert-danger">
+          <strong><%= pluralize(@guardian.errors.count, "error") %> prevented this guardian from being saved:</strong>
+          <ul class="mb-0">
+            <% @guardian.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :name, class: "form-label fw-bold" %>
+        <%= form.text_field :name, class: "form-control", placeholder: "Enter guardian name" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :email_address, class: "form-label fw-bold" %>
+        <%= form.email_field :email_address, class: "form-control", placeholder: "Enter email address" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :contact_number, class: "form-label fw-bold" %>
+        <%= form.text_field :contact_number, class: "form-control", placeholder: "Enter contact number" %>
+      </div>
+
+      <div class="text-end">
+        <%= form.submit(@guardian.new_record? ? "Create Guardian" : "Update Guardian", class: "btn btn-warning fw-bold") %>
+      </div>
+    <% end %>
+  </div>
+</div>

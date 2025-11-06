@@ -1,0 +1,9 @@
+<% content_for :title, "New classlist" %>
+
+<%= render "form", classlist: @classlist %>
+
+<br>
+
+<div class="action-buttons" style="display: flex; justify-content: flex-start;">
+  <%= link_to "Back to classlists", classlists_path, class: "btn-round-gold" %>
+</div>

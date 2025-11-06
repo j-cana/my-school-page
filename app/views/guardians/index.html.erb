@@ -1,0 +1,35 @@
+<h1>List of Guardians</h1>
+
+<table class="table table-bordered table-dark table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email Address</th>
+      <th>Contact Number</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @guardians.each do |guardian| %>
+      <tr>
+        <td><%= guardian.name %></td>
+        <td><%= guardian.email_address %></td>
+        <td><%= guardian.contact_number %></td>
+          <% if guardian.students.any? %>
+            <%= guardian.students.map(&:name).join(", ") %>
+          <% else %>
+            No students
+          <% end %>
+        </td>
+
+        <td>
+          <%= link_to "Show", guardian %> |
+          <%= link_to "Edit", edit_guardian_path(guardian) %> 
+          <%= button_to "Delete", guardian, method: :delete, data: { confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New Guardian", new_guardian_path, class: "btn btn-gxyy mt-3" %>

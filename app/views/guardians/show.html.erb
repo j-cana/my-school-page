@@ -1,0 +1,28 @@
+<h2>Guardian Details</h2>
+
+<table class="table table-dark table-striped">
+  <tr><th>Name:</th><td><%= @guardian.name %></td></tr>
+  <tr><th>Email:</th><td><%= @guardian.email_address %></td></tr>
+  <tr><th>Contact:</th><td><%= @guardian.contact_number %></td></tr>
+</table>
+
+<h3>Associated Students</h3>
+<table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Relationship</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @guardian.student_guardians.each do |sg| %>
+      <tr>
+        <td><%= sg.student.name %></td>
+        <td><%= sg.relationship %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Edit", edit_guardian_path(@guardian), class: "btn btn-gxyy" %>
+<%= link_to "Back", guardians_path, class: "btn btn-gxyy" %>

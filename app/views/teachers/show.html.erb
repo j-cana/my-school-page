@@ -1,0 +1,148 @@
+<style>
+.page-title {
+  background-color: #ffce1b;
+  color: #000000;
+  padding: 12px 20px;
+  font-weight: bold;
+}
+
+.btn-gxyy {
+  background-color: #ffce1b;
+  color: black;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-gxyy:hover {
+  background-color: black;
+  color: #ffce1b;
+  transform: scale(1.05);
+}
+
+.btn-des {
+  background-color: #ff4747;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-des:hover {
+  background-color: black;
+  color: #ff4747;
+  transform: scale(1.05);
+}
+
+.card {
+  background-color: #000;
+  color: #ffce1b;
+  border: 1.5px solid #ffce1b;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(255, 206, 27, 0.2);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-header {
+  background-color: #000;
+  color: #ffce1b;
+  font-size: 26px;
+  font-weight: 700;
+  border-bottom: 2px solid #ffce1b;
+  padding: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table {
+  background-color: #000;
+  color: #ffce1b;
+  border: 1px solid #ffce1b;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #1a1a1a;
+  color: #ffd700;
+  font-weight: bold;
+  border-bottom: 2px solid #ffce1b;
+}
+
+.table td {
+  border-color: #333;
+}
+
+.table tr:hover {
+  background-color: #111;
+  color: #ffd700;
+  transition: 0.2s;
+}
+
+.action-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+</style>
+
+<h1 class="page-title text-center">SHOW TEACHER</h1>
+
+<div class="card">
+  <div class="card-header"><%= @teacher.name %></div>
+  <div class="card-body">
+    <h4><strong>Teacher Name:</strong> <%= @teacher.name %></h4>
+    <h4><strong>Email:</strong> <%= @teacher.email %></h4>
+    <h4><strong>Specialization:</strong> <%= @teacher.specialization %></h4>
+    <h4><strong>Status:</strong> <%= @teacher.status %></h4>
+    <h4><strong>Number of Units:</strong> <%= @teacher.number_of_units %></h4>
+    <h4><strong>Monthly Salary:</strong> <%= @teacher.monthly_salary %></h4>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">List of Sections</div>
+  <div class="card-body p-0">
+    <table class="table table-bordered mb-0 table-hover table-striped">
+      <thead>
+        <tr class="table-active">
+          <th>Section Name</th>
+          <th>Subject Name</th>
+          <th>Room</th>
+          <th>Time Slot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @teacher.subjects.each do |subject| %>
+          <% subject.sections.each do |section| %>
+            <tr>
+              <td><%= section.name %></td>
+              <td><%= subject.name %></td>
+              <td><%= section.room %></td>
+              <td><%= section.time_slot %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="action-buttons">
+  <%= link_to "Edit this teacher", edit_teacher_path(@teacher), class: "btn btn-gxyy" %>
+  <%= link_to "Back to teachers", teachers_path, class: "btn btn-gxyy" %>
+  <%= button_to "Destroy this teacher", @teacher, method: :delete, class: "btn btn-des" %>
+</div>

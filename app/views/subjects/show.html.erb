@@ -1,0 +1,95 @@
+<style>
+.page-title {
+  background-color: #ffce1b;
+  color: #000000;
+  padding: 12px 20px;
+  font-weight: bold;
+}
+
+.btn-gxyy, .btn-des {
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-gxyy {
+  background-color: #ffce1b;
+  color: black;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-gxyy:hover {
+  background-color: black;
+  color: #ffce1b;
+  transform: scale(1.05);
+}
+
+.btn-des {
+  background-color: #ff4747;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-des:hover {
+  background-color: black;
+  color: #ff4747;
+  transform: scale(1.05);
+}
+
+.card {
+  background-color: #000;
+  color: #ffce1b;
+  border: 1.5px solid #ffce1b;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(255, 206, 27, 0.2);
+  margin-bottom: 30px;
+}
+</style>
+
+<h1 class="page-title text-center">SHOW SUBJECT</h1>
+
+<div class="card mb-4 shadow-sm">
+  <div class="card-header text-center" style="background-color:black;color:#ffce1b;font-weight:bold;">
+    <h4 class="mb-0"><%= @subject.name %></h4>
+  </div>
+
+  <div class="card-body">
+    <h4><strong>Teacher:</strong> <%= @subject.teacher.name %></h4>
+    <h4><strong>Number of Units:</strong> <%= @subject.number_of_units %></h4>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">Sections Under This Subject</div>
+  <div class="card-body p-0">
+    <table class="table table-bordered mb-0 table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Section</th>
+          <th>Room</th>
+          <th>Time Slot</th>
+          <th>Number of Students</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @subject.sections.each do |section| %>
+          <tr>
+            <td><%= section.name %></td>
+            <td><%= section.room %></td>
+            <td><%= section.time_slot %></td>
+            <td><%= section.number_of_students %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="action-buttons" style="display:flex;gap:10px;justify-content:flex-start;margin-top:20px;">
+  <%= link_to "Edit this subject", edit_subject_path(@subject), class: "btn btn-gxyy" %>
+  <%= link_to "Back to subjects", subjects_path, class: "btn btn-gxyy" %>
+  <%= button_to "Delete this subject", @subject, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-des" %>
+</div>
