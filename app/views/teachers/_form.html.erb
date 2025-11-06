@@ -1,0 +1,115 @@
+<style>
+  .card-body{
+    background-color: black;
+    color: #ffce1b;
+  }
+
+  .form-control{
+    background-color: black;
+    color: #ffce1b;
+    font-size: 18px;
+  }
+
+  .form-label{
+    background-color: black;
+    color: #ffce1b;
+    font-size: 18px;
+  }
+
+  .form-select{
+    background-color: black;
+    color: #ffce1b;
+    font-size: 18px;
+  }
+
+  .form-control::placeholder,
+.form-select::placeholder {
+  color: #bfa300;
+  font-style: italic;
+  opacity: 0.8;           
+  letter-spacing: 0.5px;
+}
+
+  .form-select option[value=""] {
+    color: #bfa300;
+    font-style: italic;
+    opacity: 0.8;
+  }
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #111; 
+  border-color: #ffd700;   
+  box-shadow: 0 0 5px #ffd700;
+  color: #ffce1b;
+}
+  .btn-gxyy {
+  background-color: #ffce1b;
+  color: black;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-gxyy:hover {
+  background-color: black;
+  color: #ffce1b;
+  transform: scale(1.05);
+}
+</style>
+
+<div class="card shadow-sm">
+  <div class="card-header bg-black">
+    <h5 class="mb-0"><%= teacher.new_record? ? "New Teacher" : "Edit Teacher" %></h5>
+  </div>
+
+<div class="card-body">
+  <%= form_with(model: teacher) do |form| %>
+    <% if teacher.errors.any? %>
+      <div class="alert alert-danger">
+        <strong><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</strong>
+      <ul class="mb-0">
+        <% teacher.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label fw-bold"%>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter teacher name" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email,class: "form-label fw-bold"%>
+    <%= form.text_field :email, class: "form-control", placeholder: "Enter teacher name" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :specialization, class: "form-label fw-bold"%>
+    <%= form.text_field :specialization, class: "form-control", placeholder: "Enter teacher name" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :status, class: "form-label fw-bold"%>
+    <%= form.text_field :status, class: "form-control", placeholder: "Enter status" %>
+  </div>
+
+   <div class="mb-3">
+    <%= form.label :department_id, "Department", class: "form-label fw-bold"%>
+    <%= form.collection_select :department_id, Department.all, :id, :name, 
+    { prompt: "Select a department" },
+    { class: "form-select" } %>
+  </div>
+
+  <div  class="text-end">
+    <%= form.submit(teacher.new_record? ? "Create Teacher" : "Update Teacher", class: "btn btn-gxyy") %>
+  </div>
+<% end %>
+</div>
+</div>

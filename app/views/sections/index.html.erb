@@ -1,0 +1,29 @@
+
+
+<% content_for :title, "Sections" %>
+
+<h1>Sections</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Room</th>
+      <th>Time Slot</th>
+      <th>Subject</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sections.each do | section | %>
+      <tr>
+        <td><%= section.name %></td>
+        <td><%= section.room %></td>
+        <td><%= section.time_slot %></td>
+        <td><%= section.subject.name %></td>
+        <td><%= link_to " Show this section ", section %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New section", new_section_path %>

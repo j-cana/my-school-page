@@ -1,0 +1,143 @@
+<style>
+.page-title {
+  background-color: #ffce1b;
+  color: #000000;
+  padding: 12px 20px;
+  font-weight: bold;
+}
+
+.btn-gxyy {
+  background-color: #ffce1b;
+  color: black;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-gxyy:hover {
+  background-color: black;
+  color: #ffce1b;
+  transform: scale(1.05);
+}
+
+.btn-des {
+  background-color: #ff4747;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-des:hover {
+  background-color: black;
+  color: #ff4747;
+  transform: scale(1.05);
+}
+
+.card {
+  background-color: #000;
+  color: #ffce1b;
+  border: 1.5px solid #ffce1b;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(255, 206, 27, 0.2);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-header {
+  background-color: #000;
+  color: #ffce1b;
+  font-size: 26px;
+  font-weight: 700;
+  border-bottom: 2px solid #ffce1b;
+  padding: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table {
+  background-color: #000;
+  color: #ffce1b;
+  border: 1px solid #ffce1b;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #1a1a1a;
+  color: #ffd700;
+  font-weight: bold;
+  border-bottom: 2px solid #ffce1b;
+}
+
+.table td {
+  border-color: #333;
+}
+
+.table tr:hover {
+  background-color: #111;
+  color: #ffd700;
+  transition: 0.2s;
+}
+
+.action-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+</style>
+
+<h1 class="page-title text-center">SHOW DEPARTMENT</h1>
+
+<div class="card">
+  <div class="card-header"><%= @department.name %></div>
+  <div class="card-body">
+    <h4><strong>Department Name:</strong> <%= @department.name %></h4>
+    <h4><strong>Location:</strong> <%= @department.location %></h4>
+    <h4><strong>Student Count:</strong> <%= @department.student_count %></h4>
+    <h4><strong>Employee Count:</strong> <%= @department.employee_count %></h4>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">List of Students</div>
+  <div class="card-body p-0">
+    <table class="table table-bordered mb-0 table-hover table-striped">
+      <thead>
+        <tr class="table-active">
+          <th>Name</th>
+          <th>Program</th>
+          <th>Year Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @department.students.each do |student| %>
+            <tr>
+              <td><%= student.name %></td>
+              <td><%= student.program %></td>
+              <td><%= student.year_level %></td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="action-buttons">
+  <%= link_to "Edit this department", edit_department_path(@department), class: "btn btn-gxyy" %>
+  <%= link_to "Back to departments", departments_path, class: "btn btn-gxyy" %>
+
+  <%= button_to "Destroy this department", @department, method: :delete, class: "btn btn-des" %>
+</div>
