@@ -1,11 +1,9 @@
 <% content_for :title, "New subject" %>
 
-<h1>New subject</h1>
-
 <%= render "form", subject: @subject %>
 
 <br>
 
-<div>
-  <%= link_to "Back to subjects", subjects_path %>
+<div class="action-buttons" style="display: flex; justify-content: flex-start;">
+  <%= link_to "Back to subjects", subjects_path, class: "btn-round-gold" %>
 </div>
