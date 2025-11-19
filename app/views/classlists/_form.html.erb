@@ -1,27 +1,58 @@
-<%= form_with(model: classlist) do |form| %>
-  <% if classlist.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(classlist.errors.count, "error") %> prohibited this classlist from being saved:</h2>
+<style>
+  .gold-placeholder::placeholder {
+    color: #bfa300;
+    font-style: italic;
+    opacity: 0.8; 
+    letter-spacing: 0.5px;
+  }
 
-      <ul>
-        <% classlist.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  .btn-round-gold {
+    background-color: #ffce1b;
+    color: black;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
 
-  <div>
-    <%= form.label :student_id, style: "display: block" %>
-    <%= form.collection_select :student_id, Student.all, :id, :name, prompt: "Select a student" %>
+  .btn-round-gold:hover {
+    background-color: black;
+    color: #ffce1b;
+    transform: scale(1.05);
+  }
+</style>
+
+<h1 class="page-title text-center" style="background-color: #ffce1b; color: black;">
+  <%= classlist.new_record? ? "CREATE CLASSLIST" : "EDIT CLASSLIST" %>
+</h1>
+
+<div class="card mb-4 shadow-sm" style="border-color: #ffce1b; border-width: 2px;">
+  <div class="card-body" style="background-color: black; color: #ffce1b;">
+    <%= form_with(model: classlist) do |form| %>
+
+      <div class="mb-3">
+        <%= form.label :student_id, "Student", class: "form-label fw-bold", style: "color: #ffce1b;" %>
+        <%= form.collection_select :student_id, Student.all, :id, :name,
+              { prompt: "Select a student" },
+              { class: "form-select", style: "background-color: black; color: #ffce1b; border-color: #ffce1b;" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :section_id, "Section", class: "form-label fw-bold", style: "color: #ffce1b;" %>
+        <%= form.collection_select :section_id, Section.all, :id, :name,
+              { prompt: "Select a section" },
+              { class: "form-select", style: "background-color: black; color: #ffce1b; border-color: #ffce1b;" } %>
+      </div>
+
+      <div class="action-buttons" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+        <%= form.submit(classlist.new_record? ? "Create Record" : "Update Record", class: "btn-round-gold") %>
+      </div>
+
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :section_id, style: "display: block" %>
-    <%= form.collection_select :section_id, Section.all, :id, :name, prompt: "Select a section" %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
