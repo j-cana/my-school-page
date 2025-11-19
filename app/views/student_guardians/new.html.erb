@@ -1,11 +1,47 @@
+<style>
+.page-title {
+  background-color: #ffce1b;
+  color: #000000;
+  padding: 12px 20px;
+  font-weight: bold;
+}
+
+.btn-gxyy {
+  background-color: #ffce1b;
+  color: black;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-gxyy:hover {
+  background-color: black;
+  color: #ffce1b;
+  transform: scale(1.05);
+}
+
+.action-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+</style>
+
 <% content_for :title, "New student guardian" %>
 
-<h1>New student guardian</h1>
+<h1 class="page-title text-center" style="background-color: #ffce1b; color: black;">
+  NEW STUDENT GUARDIAN
+</h1>
 
 <%= render "form", student_guardian: @student_guardian %>
 
 <br>
 
-<div>
-  <%= link_to "Back to student guardians", student_guardians_path %>
+<div class="action-buttons" style="display: flex; justify-content: flex-start; gap: 10px;">
+  <%= link_to "Back to student guardians", student_guardians_path, class: "btn-round-gold" %>
 </div>
