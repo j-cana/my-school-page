@@ -1,6 +1,70 @@
+<style>
+  .card-body{
+    background-color: black;
+    color: #ffce1b;
+  }
+
+  .form-control{
+    background-color: black;
+    color: #ffce1b;
+    font-size: 18px;
+  }
+
+  .form-label{
+    background-color: black;
+    color: #ffce1b;
+    font-size: 18px;
+  }
+
+  .form-select{
+    background-color: black;
+    color: #ffce1b;
+    font-size: 18px;
+  }
+
+  .form-control::placeholder,
+.form-select::placeholder {
+  color: #bfa300;
+  font-style: italic;
+  opacity: 0.8;           
+  letter-spacing: 0.5px;
+}
+
+  .form-select option[value=""] {
+    color: #bfa300;
+    font-style: italic;
+    opacity: 0.8;
+  }
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #111; 
+  border-color: #ffd700;   
+  box-shadow: 0 0 5px #ffd700;
+  color: #ffce1b;
+}
+  .btn-gxyy {
+  background-color: #ffce1b;
+  color: black;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-gxyy:hover {
+  background-color: black;
+  color: #ffce1b;
+  transform: scale(1.05);
+}
+</style>
+
 <div class="card shadow-sm">
-  <div class="card-header bg-black text-warning fw-bold">
-    <%= @guardian.new_record? ? "New Guardian" : "Edit Guardian" %>
+  <div class="card-header bg-black">
+    <h5 class="mb-0"><%= @guardian.new_record? ? "New Guardian" : "Edit Guardian" %></h5>
   </div>
 
   <div class="card-body">
@@ -32,7 +96,7 @@
       </div>
 
       <div class="text-end">
-        <%= form.submit(@guardian.new_record? ? "Create Guardian" : "Update Guardian", class: "btn btn-warning fw-bold") %>
+        <%= form.submit(@guardian.new_record? ? "Create Guardian" : "Update Guardian", class: "btn btn-gxyy") %>
       </div>
     <% end %>
   </div>
