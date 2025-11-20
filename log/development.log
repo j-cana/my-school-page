@@ -1270,3 +1270,20 @@ Processing by GuardiansController#index as HTML
 Completed 200 OK in 44ms (Views: 19.7ms | ActiveRecord: 1.3ms (3 queries, 0 cached) | GC: 0.6ms)
 
 
+Started GET "/guardians" for 172.20.0.1 at 2025-11-20 04:34:09 +0000
+Cannot render console from 172.20.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Helloworldapplication'*/[0m
+Processing by GuardiansController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering guardians/index.html.erb within layouts/application
+  [1m[36mGuardian Load (0.5ms)[0m  [1m[34mSELECT "guardians".* FROM "guardians" /*action='index',application='Helloworldapplication',controller='guardians'*/[0m
+  ↳ app/views/guardians/index.html.erb:117
+  [1m[36mStudent Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "students" INNER JOIN "student_guardians" ON "students"."id" = "student_guardians"."student_id" WHERE "student_guardians"."guardian_id" = 1 LIMIT 1 /*action='index',application='Helloworldapplication',controller='guardians'*/[0m
+  ↳ app/views/guardians/index.html.erb:122
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" INNER JOIN "student_guardians" ON "students"."id" = "student_guardians"."student_id" WHERE "student_guardians"."guardian_id" = 1 /*action='index',application='Helloworldapplication',controller='guardians'*/[0m
+  ↳ app/views/guardians/index.html.erb:123:in `map'
+  Rendered guardians/index.html.erb within layouts/application (Duration: 18.1ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 22.8ms | GC: 0.6ms)
+Completed 200 OK in 49ms (Views: 23.2ms | ActiveRecord: 1.5ms (3 queries, 0 cached) | GC: 1.9ms)
+
+

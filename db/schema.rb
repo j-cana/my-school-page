@@ -33,7 +33,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_02_064532) do
     t.string "name"
     t.string "email_address"
     t.string "contact_number"
-    t.integer "number_of_student"
+    t.integer "number_of_students"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
