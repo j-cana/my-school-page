@@ -4,3 +4,5 @@ helloworld_development-wal
 helloworld_test
 helloworld_test-shm
 helloworld_test-wal
+/tmp/cache/
+tmp/pids/
