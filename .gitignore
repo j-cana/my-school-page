@@ -9,3 +9,10 @@ tmp/pids/
 log/*.log
 log/*.pid
 tmp/
+# Rails / SQLite / Cache
+log/*.log
+tmp/
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+
