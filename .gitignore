@@ -9,6 +9,7 @@ tmp/pids/
 log/*.log
 log/*.pid
 tmp/
+<<<<<<< HEAD
 # Rails / SQLite / Cache
 log/*.log
 tmp/
@@ -16,3 +17,6 @@ tmp/
 *.sqlite3-shm
 *.sqlite3-wal
 
+=======
+helloworld_development*
+>>>>>>> 29e9fda46018b50e1c3b6a04b3dfc8d7fc0afdf8
