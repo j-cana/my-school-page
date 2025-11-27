@@ -6,3 +6,6 @@ helloworld_test-shm
 helloworld_test-wal
 /tmp/cache/
 tmp/pids/
+log/*.log
+log/*.pid
+tmp/
