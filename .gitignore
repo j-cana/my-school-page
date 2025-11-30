@@ -27,3 +27,4 @@ helloworld_development*
 /tmp/cache/
 helloworld_development*
 tmp/
+log/*.log
