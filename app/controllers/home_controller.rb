@@ -4,4 +4,10 @@ class HomeController < ApplicationController
 
     def about_us
   end
+
+  def cv1
+  end
+
+  def cv2
+  end
 end

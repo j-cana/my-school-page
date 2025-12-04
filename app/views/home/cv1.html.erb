@@ -1,0 +1,120 @@
+<style>
+body{
+    background-color: #000;
+}
+.cv-wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+  background: rgba(0, 0, 0, 0.55);
+  border: 2px solid #ffce1b;
+  border-radius: 15px;
+  padding: 30px;
+  color: #ffce1b;
+  box-shadow: 0 4px 15px rgba(255, 206, 27, 0.2);
+  font-family: 'Poppins', sans-serif;
+}
+
+.cv-header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ffce1b;
+}
+
+.cv-header img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2px solid #ffce1b;
+  object-fit: cover;
+}
+
+.cv-header h1 {
+  font-size: 36px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.cv-header p {
+  font-size: 18px;
+  margin: 0;
+}
+
+.section-title {
+  margin-top: 30px;
+  font-size: 22px;
+  font-weight: bold;
+  border-bottom: 1px solid #ffce1b;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cv-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.cv-list li {
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+.skill-badge {
+  background-color: #ffce1b;
+  color: black;
+  padding: 6px 12px;
+  border-radius: 50px;
+  margin: 5px;
+  display: inline-block;
+  font-weight: bold;
+}
+</style>
+
+<div class="cv-wrapper">
+
+  <div class="cv-header">
+    <img src="<%= asset_path 'pfp_co.jpg' %>" alt="Profile Picture">
+    <div>
+      <h1>Francis Valen Co</h1>
+      <p>Web Page Developer | UI/UX Designer</p>
+      <small>Email: fco@gbox.adnu.edu.ph</small><br>
+      <small>LinkedIn: <a href="https://www.linkedin.com/in/francis-valen-co-471453296" target="_blank" style="color:#ffd700;">Click Here</a></small>
+    </div>
+  </div>
+
+  <h3 class="section-title">Profile</h3>
+  <p>
+  Passionate web developer specializing in UI/UX design, front-end development, and building efficient school systems that enhance productivity and academic engagement.
+  </p>
+
+  <h3 class="section-title">Skills</h3>
+  <div>
+    <span class="skill-badge">Ruby on Rails</span>
+    <span class="skill-badge">Bootstrap 5</span>
+    <span class="skill-badge">HTML & CSS</span>
+    <span class="skill-badge">JavaScript</span>
+    <span class="skill-badge">UI/UX Design</span>
+  </div>
+
+  <h3 class="section-title">Education</h3>
+  <ul class="cv-list">
+    <li><strong>Bachelor of Science in Computer Engineering</strong> – Ateneo de Naga University</li>
+    <li>Expected Graduation: 2027</li>
+  </ul>
+
+  <h3 class="section-title">Projects</h3>
+  <ul class="cv-list">
+    <li><strong>School Manager</strong> – School management system</li>
+    <li>Built using Ruby on Rails, Bootstrap, and SQLite</li>
+  </ul>
+
+  <h3 class="section-title">Experience</h3>
+  <ul class="cv-list">
+    <li>Freelance UI Designer – Designed modern web layouts and dashboards</li>
+  </ul>
+
+</div>
+
