@@ -58,6 +58,27 @@ body {
   .contact-link:hover {
     color: white;
   }
+
+  .btn-gxyy {
+  background-color: none;
+  border-color: #ffce1b;
+  border-width: 2px;
+  color: #ffce1b;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  }
+
+  .btn-gxyy:hover {
+  background-color: black;
+  color: white;
+  border-color: white;
+  transform: scale(1.05);
+  }
+  
 </style>
 
 <body>
@@ -80,7 +101,7 @@ body {
   <div class="row">
     <div class="col">
   <img src="<%= asset_path 'pfp_co.jpg' %>" class="profile-pic hero-img" alt="">
-        <h5 style="text-decoration: underline">Francis Valen Co</h5>
+        <h5>Francis Valen Co</h5>
         <p class="mb-5"> </p>
         <h5 class="mt-3">Role: Developer</h5>
         <h5>Responsibilities: Frontend, UI design</h5>
@@ -91,6 +112,10 @@ body {
           </a>
         </h5>
         <h5>Gbox: fco@gbox.adnu.edu.ph</h5>
+
+        <div class="mt-5 mb-5">
+        <%= link_to "View CV", cv1_path, class:"btn btn-gxyy"%>
+        </div>
     </div>
 
     <div class="col order-5">
@@ -106,6 +131,10 @@ body {
           </a>
         </h5>
         <h5>Gbox: jcana@gbox.adnu.edu.ph </h5>
+
+        <div class="mt-5 mb-5">
+        <%= link_to "View CV", cv2_path, class:"btn btn-gxyy"%>
+        </div>
     </div>
   </div>
 </div>
