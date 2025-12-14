@@ -43,7 +43,7 @@
         color: white;
         transition: 0.3s;
         padding-top: 60px;
-        z-index: 2000;
+        z-index: 3000;
       }
 
       .sidebar a {
@@ -70,6 +70,7 @@
         background: none;
         color: #ffce1b;
         cursor: pointer;
+        position: relative;
       }
 
       body.sidebar-open {
@@ -84,7 +85,7 @@
         height: 100%;
         width: 100%;
         background: rgba(0, 0, 0, 0.5);
-        z-index: 1500;
+        z-index: 2000;
       }
 
       #overlay.active {
@@ -104,6 +105,7 @@
 
     <!-- 🔹 Sidebar -->
     <div class="sidebar" id="sidebar">
+      <a href="<%= root_path %>">Home</a>
       <a href="<%= students_path %>">Students</a>
       <a href="<%= teachers_path %>">Teachers</a>
       <a href="<%= departments_path %>">Departments</a>
@@ -111,6 +113,7 @@
       <a href="<%= sections_path %>">Sections</a>
       <a href="<%= classlists_path %>">Classlists</a>
       <a href="<%= guardians_path %>">Guardians</a>
+      <a href="<%= student_guardians_path %>">Relationships</a>
     </div>
 
     <div id="overlay"></div>
@@ -132,23 +135,44 @@
 
     <!-- 🔹 Sidebar Toggle Script -->
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const menuBtn = document.getElementById("menuBtn");
-        const sidebar = document.getElementById("sidebar");
-        const overlay = document.getElementById("overlay");
+  document.addEventListener("turbo:load", () => {
+    const menuBtn = document.getElementById("menuBtn");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
 
-        menuBtn.addEventListener("click", function() {
-          sidebar.classList.toggle("active");
-          overlay.classList.toggle("active");
-          document.body.classList.toggle("sidebar-open");
-        });
+    if (!menuBtn || !sidebar || !overlay) return;
 
-        overlay.addEventListener("click", function() {
-          sidebar.classList.remove("active");
-          overlay.classList.remove("active");
-          document.body.classList.remove("sidebar-open");
-        });
-      });
-    </script>
+
+    menuBtn.replaceWith(menuBtn.cloneNode(true));
+    overlay.replaceWith(overlay.cloneNode(true));
+
+    const newMenuBtn = document.getElementById("menuBtn");
+    const newOverlay = document.getElementById("overlay");
+
+    function openSidebar() {
+      sidebar.classList.add("active");
+      newOverlay.classList.add("active");
+      document.body.classList.add("sidebar-open");
+    }
+
+    function closeSidebar() {
+      sidebar.classList.remove("active");
+      newOverlay.classList.remove("active");
+      document.body.classList.remove("sidebar-open");
+    }
+
+    newMenuBtn.addEventListener("click", () => {
+      sidebar.classList.contains("active") ? closeSidebar() : openSidebar();
+    });
+
+    newOverlay.addEventListener("click", closeSidebar);
+
+    sidebar.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", closeSidebar);
+    });
+  });
+</script>
+
+
   </body>
 </html>
